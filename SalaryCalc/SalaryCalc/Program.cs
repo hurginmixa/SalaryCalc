@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using PersonsService;
 
 namespace SalaryCalc
 {
@@ -7,6 +8,8 @@ namespace SalaryCalc
     {
         public static void Main(string[] args)
         {
+            IPersonService personService = PersonsService.PersonsServiceFactory.Service();
+
             Console.OutputEncoding = Encoding.UTF8;
             Console.Clear();
 
