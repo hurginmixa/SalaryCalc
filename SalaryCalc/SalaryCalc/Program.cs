@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using PersonsService;
+using SalaryCalc.Controllers;
 using SalaryCalc.Views;
 
 namespace SalaryCalc
@@ -12,9 +13,13 @@ namespace SalaryCalc
             IPersonService personService = PersonsService.PersonsServiceFactory.Service();
 
             Console.OutputEncoding = Encoding.UTF8;
-            Console.Clear();
 
-            new LoginView().View();
+            ViewResultController viewResult = new LoginView().View();
+
+            while (viewResult != null)
+            {
+                viewResult = viewResult.Controller.Run(viewResult.ViewResult);
+            }
         }
     }
 }

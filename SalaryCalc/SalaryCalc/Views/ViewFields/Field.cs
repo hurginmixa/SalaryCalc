@@ -14,13 +14,17 @@ namespace SalaryCalc.Views.ViewFields
 
         public abstract eInputFieldResult Input();
 
+        public abstract void Draw();
+
         protected int Left { get; }
 
         protected int Top { get; }
 
         protected int Length { get; }
 
-        protected string Name { get; }
+        public string Name { get; }
+
+        public abstract string Value { get; }
 
         protected static eInputFieldResult Convert(ViewTools.eInputResult src)
         {
@@ -42,7 +46,5 @@ namespace SalaryCalc.Views.ViewFields
                     throw new ArgumentOutOfRangeException(nameof(src), src, null);
             }
         }
-
-        public abstract void Draw();
     }
 }

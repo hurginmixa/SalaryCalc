@@ -27,5 +27,7 @@ namespace SalaryCalc.Views.ViewFields
         {
             ViewTools.Txt(left: Left, top: Top, length: Length, text: _text);
         }
+
+        public override string Value => _text;
     }
 }
