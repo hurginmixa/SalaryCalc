@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SalaryCalc.Controllers;
+using SalaryCalc.Views.ViewClasses;
 using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Views
@@ -19,12 +20,19 @@ namespace SalaryCalc.Views
 
             FieldList fields = new FieldList()
                 .Add(new EditField(top: 4, left: 13, length: 15, name: "FirstName", text: ""))
-                .Add(new EditField(top: 5, left: 13, length: 15, name: "SecondName", text: ""))
+                .Add(new EditField(top: 5, left: 13, length: 15, name: "LastName", text: ""))
                 .Add(new WaitOkField(top: 6, left: 3, name: "Ok", text: "[ Ok ]"));
 
-            eInputFieldResult inputFieldResult = fields.Input();
+            if (model is string message && !string.IsNullOrWhiteSpace(message))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                ViewTools.Txt(top: 8, left: 3, length: 20, text: message);
+                Console.ResetColor();
+            }
 
-            return new ControllerRequest(inputFieldResult, fields, new LoginController());
+            eViewStatus viewStatus = fields.Input();
+
+            return new ControllerRequest(new LoginController(), viewStatus, fields);
         }
     }
 }

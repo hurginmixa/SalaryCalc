@@ -1,12 +1,18 @@
 ﻿using SalaryCalc.Views;
+using SalaryCalc.Views.ViewClasses;
 
 namespace SalaryCalc.Controllers
 {
     internal abstract class ViewRequestBase
     {
-        public abstract ViewBase View { get; }
-        
-        public abstract object Model { get; }
+        protected abstract ViewBase View { get; }
+
+        protected abstract object Model { get; }
+
+        public ControllerRequest RunView()
+        {
+            return View.View(model: Model);
+        }
     }
 
     internal class ViewRequest<T> : ViewRequestBase where T : ViewBase, new()
@@ -20,8 +26,8 @@ namespace SalaryCalc.Controllers
         {
         }
 
-        public override ViewBase View => new T();
-        
-        public override object Model { get; }
+        protected override ViewBase View => new T();
+
+        protected override object Model { get; }
     }
 }

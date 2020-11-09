@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using SalaryCalc.Views;
+using SalaryCalc.Views.ViewClasses;
 using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Controllers
@@ -14,14 +15,14 @@ namespace SalaryCalc.Controllers
                 return new ViewRequest<ManagerMainView>();
             }
 
-            if (viewResult.InputFieldResult != eInputFieldResult.Ok)
+            if (viewResult.ViewStatus != eViewStatus.Ok)
             {
                 return new ViewRequest<ExitView>();
             }
 
             var choose = viewResult.Fields["Choose"].Value;
 
-            if (choose == "0")
+            if (choose == "5")
             {
                 return new ViewRequest<ExitView>();
             }

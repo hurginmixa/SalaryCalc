@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SalaryCalc.Views.ViewClasses;
 
 namespace SalaryCalc.Views.ViewFields
 {
@@ -13,7 +14,7 @@ namespace SalaryCalc.Views.ViewFields
             return this;
         }
 
-        public eInputFieldResult Input()
+        public eViewStatus Input()
         {
             foreach (var field in _fields)
             {
@@ -42,7 +43,7 @@ namespace SalaryCalc.Views.ViewFields
                 inputFieldResult = currentFiend.Input();
             }
 
-            return inputFieldResult;
+            return inputFieldResult == eInputFieldResult.Ok ? eViewStatus.Ok : eViewStatus.Cancel;
         }
 
         public IEnumerable<Field> List => _fields;

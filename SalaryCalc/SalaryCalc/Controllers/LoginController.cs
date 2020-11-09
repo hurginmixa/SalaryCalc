@@ -1,5 +1,6 @@
-﻿using System;
+﻿using PersonsService;
 using SalaryCalc.Views;
+using SalaryCalc.Views.ViewClasses;
 using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Controllers
@@ -13,10 +14,19 @@ namespace SalaryCalc.Controllers
                 return new ViewRequest<LoginView>();
             }
 
-            if (viewResult.InputFieldResult == eInputFieldResult.Cancel)
+            if (viewResult.ViewStatus == eViewStatus.Cancel)
             {
                 return new ViewRequest<ExitView>();
             }
+
+            IPersonService personService = PersonsServiceFactory.Service();
+
+            if (personService.GetPerson(viewResult.Fields["FirstName"].Value, viewResult.Fields["LastName"].Value, out IPerson person) != PersonServiceResult.Success)
+            {
+                return new ViewRequest<LoginView>("User not found");
+            }
+
+
 
             return new ViewRequest<ManagerMainView>();
         }

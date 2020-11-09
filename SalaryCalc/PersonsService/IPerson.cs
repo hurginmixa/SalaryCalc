@@ -4,7 +4,7 @@
     {
         string FirstName { get; }
 
-        string SecondName { get; }
+        string LastName { get; }
         
         Role Role { get; }
     }

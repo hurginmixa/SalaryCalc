@@ -1,20 +1,39 @@
-﻿namespace PersonsService
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace PersonsService
 {
     internal class PersonsService : IPersonService
     {
+        private readonly List<Person> _list = new List<Person>();
+
+        public PersonsService()
+        {
+            AddNewPerson("a", "b", Role.Manager);
+        }
+
         public void Save()
         {
-            throw new System.NotImplementedException();
         }
 
         public PersonServiceResult GetPerson(string firstName, string lastName, out IPerson person)
         {
-            throw new System.NotImplementedException();
+            person = _list.FirstOrDefault(p => p.FirstName == firstName && p.LastName == lastName);
+
+            return person != null ? PersonServiceResult.Success : PersonServiceResult.PersonIsNotFound;
         }
 
         public PersonServiceResult AddNewPerson(string firstName, string lastName, Role role)
         {
-            throw new System.NotImplementedException();
+            if (GetPerson(firstName, lastName, out _) == PersonServiceResult.Success)
+            {
+                return PersonServiceResult.AlreadyExist;
+            }
+
+            Person person = new Person(firstName, lastName, role);
+            _list.Add(person);
+
+            return PersonServiceResult.Success;
         }
     }
 }

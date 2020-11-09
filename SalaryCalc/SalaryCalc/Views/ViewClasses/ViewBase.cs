@@ -1,6 +1,6 @@
 ﻿using SalaryCalc.Controllers;
 
-namespace SalaryCalc.Views
+namespace SalaryCalc.Views.ViewClasses
 {
     internal abstract class ViewBase
     {

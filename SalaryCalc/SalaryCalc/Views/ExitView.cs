@@ -1,5 +1,6 @@
 ﻿using System;
 using SalaryCalc.Controllers;
+using SalaryCalc.Views.ViewClasses;
 using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Views

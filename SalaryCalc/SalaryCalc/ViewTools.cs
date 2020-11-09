@@ -117,7 +117,7 @@ namespace SalaryCalc
             Console.ResetColor();
             RefreshText();
 
-            return txt.ToString();
+            return txt.ToString().Trim();
         }
 
         public static eInputResult WaitToOk(int left, int top, ConsoleColor color, string text)

@@ -6,7 +6,7 @@
 
         static PersonsServiceFactory()
         {
-            _personService = new global::PersonsService.PersonsService();
+            _personService = new PersonsService();
         }
 
         public static IPersonService Service() => _personService;

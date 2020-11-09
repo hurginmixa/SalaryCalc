@@ -1,27 +1,22 @@
 ﻿using System;
 using System.Text;
-using PersonsService;
 using SalaryCalc.Controllers;
-using SalaryCalc.Views;
+using SalaryCalc.Views.ViewClasses;
 using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc
 {
     internal static class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            IPersonService personService = PersonsService.PersonsServiceFactory.Service();
-
             Console.OutputEncoding = Encoding.UTF8;
 
-            ControllerRequest controllerRequest = new ControllerRequest(eInputFieldResult.Ok, new FieldList(), new LoginController());
+            ControllerRequest controllerRequest = new ControllerRequest(new LoginController(), eViewStatus.None, new FieldList());
 
             while (controllerRequest != null)
             {
-                var viewRequest = controllerRequest.Controller.Run(controllerRequest.ViewResult);
-
-                controllerRequest = viewRequest.View.View(model: viewRequest.Model);
+                controllerRequest = controllerRequest.RunController().RunView();
             }
         }
     }

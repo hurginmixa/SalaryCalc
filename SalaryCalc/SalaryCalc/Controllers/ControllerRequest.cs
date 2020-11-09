@@ -1,19 +1,21 @@
 ﻿using SalaryCalc.Views;
+using SalaryCalc.Views.ViewClasses;
 using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Controllers
 {
     internal class ControllerRequest
     {
-        public ControllerRequest(eInputFieldResult inputFieldResult, FieldList fields, ControllerBase controller)
-        {
-            ViewResult = new ViewResult(inputFieldResult, fields);
+        private readonly ViewResult _viewResult;
+        private readonly ControllerBase _controller;
 
-            Controller = controller;
+        public ControllerRequest(ControllerBase controller, eViewStatus viewStatus, FieldList fields)
+        {
+            _viewResult = new ViewResult(viewStatus, fields);
+
+            _controller = controller;
         }
 
-        public ViewResult ViewResult { get; }
-
-        public ControllerBase Controller { get; }
+        public ViewRequestBase RunController() => _controller.Run(_viewResult);
     }
 }
