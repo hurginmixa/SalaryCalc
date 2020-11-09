@@ -1,13 +1,12 @@
 ﻿using System;
 using SalaryCalc.Controllers;
 using SalaryCalc.Views.ViewClasses;
-using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Views
 {
     internal class ExitView : ViewBase
     {
-        public override ControllerRequest View(object model)
+        public override ControllerRequestBase View(object model)
         {
             Console.Clear();
             Console.CursorVisible = false;

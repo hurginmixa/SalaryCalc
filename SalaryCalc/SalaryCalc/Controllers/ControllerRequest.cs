@@ -1,21 +1,28 @@
-﻿using SalaryCalc.Views;
-using SalaryCalc.Views.ViewClasses;
+﻿using SalaryCalc.Views.ViewClasses;
 using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Controllers
 {
-    internal class ControllerRequest
+    internal abstract class ControllerRequestBase
     {
         private readonly ViewResult _viewResult;
-        private readonly ControllerBase _controller;
 
-        public ControllerRequest(ControllerBase controller, eViewStatus viewStatus, FieldList fields)
+        protected ControllerRequestBase(eViewStatus viewStatus, FieldList fields)
         {
             _viewResult = new ViewResult(viewStatus, fields);
-
-            _controller = controller;
         }
 
-        public ViewRequestBase RunController() => _controller.Run(_viewResult);
+        public ViewRequestBase RunController() => Controller.Run(_viewResult);
+
+        protected abstract ControllerBase Controller { get; }
+    }
+
+    internal class ControllerRequest<TControllerBase> : ControllerRequestBase where TControllerBase : ControllerBase, new()
+    {
+        public ControllerRequest(eViewStatus viewStatus, FieldList fields) : base(viewStatus, fields)
+        {
+        }
+
+        protected override ControllerBase Controller => new TControllerBase();
     }
 }

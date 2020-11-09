@@ -8,7 +8,7 @@ namespace SalaryCalc.Views
 {
     internal class LoginView : ViewBase
     {
-        public override ControllerRequest View(object model)
+        public override ControllerRequestBase View(object model)
         {
             Console.Clear();
             Console.CursorVisible = false;
@@ -32,7 +32,7 @@ namespace SalaryCalc.Views
 
             eViewStatus viewStatus = fields.Input();
 
-            return new ControllerRequest(new LoginController(), viewStatus, fields);
+            return new ControllerRequest<LoginController>(viewStatus: viewStatus, fields: fields);
         }
     }
 }

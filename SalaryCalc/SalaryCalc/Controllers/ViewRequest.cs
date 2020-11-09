@@ -9,7 +9,7 @@ namespace SalaryCalc.Controllers
 
         protected abstract object Model { get; }
 
-        public ControllerRequest RunView()
+        public ControllerRequestBase RunView()
         {
             return View.View(model: Model);
         }

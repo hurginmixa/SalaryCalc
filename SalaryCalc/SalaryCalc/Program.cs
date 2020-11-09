@@ -12,7 +12,7 @@ namespace SalaryCalc
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            ControllerRequest controllerRequest = new ControllerRequest(new LoginController(), eViewStatus.None, new FieldList());
+            ControllerRequestBase controllerRequest = new ControllerRequest<LoginController>(eViewStatus.None, new FieldList());
 
             while (controllerRequest != null)
             {
