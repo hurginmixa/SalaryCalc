@@ -7,21 +7,21 @@ namespace SalaryCalc.Controllers
 {
     internal class ManagerMainController : Controller
     {
-        public override ViewResultController Run(ViewResult viewResult)
+        public override ViewRequest Run(ViewResult viewResult)
         {
             if (viewResult.InputFieldResult != eInputFieldResult.Ok)
             {
-                return new ExitView().View();
+                return new ViewRequest(new ExitView());
             }
 
             var choose = (viewResult.Fields.List.First(f => f.Name == "Choose").Value ?? "");
 
             if (choose == "0")
             {
-                return new ExitView().View();
+                return new ViewRequest(new ExitView());
             }
 
-            return new ManagerMainView().View();
+            return new ViewRequest(new ManagerMainView());
         }
     }
 }

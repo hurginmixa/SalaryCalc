@@ -1,13 +1,7 @@
-﻿using System;
-using SalaryCalc.Views;
+﻿using SalaryCalc.Views;
 
 namespace SalaryCalc.Controllers
 {
-    internal abstract class Controller
-    {
-        public abstract ViewRequest Run(ViewResult viewResult);
-    }
-
     internal class ViewRequest
     {
         public ViewRequest(ViewBase view, object model)

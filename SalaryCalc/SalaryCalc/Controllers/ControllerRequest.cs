@@ -3,9 +3,9 @@ using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Controllers
 {
-    internal class ViewResultController
+    internal class ControllerRequest
     {
-        public ViewResultController(eInputFieldResult inputFieldResult, FieldList fields, Controller controller)
+        public ControllerRequest(eInputFieldResult inputFieldResult, FieldList fields, Controller controller)
         {
             ViewResult = new ViewResult(inputFieldResult, fields);
 

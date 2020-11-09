@@ -5,9 +5,9 @@ using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Views
 {
-    internal class LoginView
+    internal class LoginView : ViewBase
     {
-        public ViewResultController View()
+        public override ControllerRequest View(object model)
         {
             Console.Clear();
             Console.CursorVisible = false;
@@ -24,7 +24,7 @@ namespace SalaryCalc.Views
 
             eInputFieldResult inputFieldResult = fields.Input();
 
-            return new ViewResultController(inputFieldResult, fields, new LoginController());
+            return new ControllerRequest(inputFieldResult, fields, new LoginController());
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Text;
 using PersonsService;
 using SalaryCalc.Controllers;
 using SalaryCalc.Views;
+using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc
 {
@@ -14,11 +15,13 @@ namespace SalaryCalc
 
             Console.OutputEncoding = Encoding.UTF8;
 
-            ViewResultController viewResult = new LoginView().View();
+            ControllerRequest controllerRequest = new ControllerRequest(eInputFieldResult.Ok, new FieldList(), new LoginController());
 
-            while (viewResult != null)
+            while (controllerRequest != null)
             {
-                viewResult = viewResult.Controller.Run(viewResult.ViewResult);
+                var viewRequest = controllerRequest.Controller.Run(controllerRequest.ViewResult);
+
+                controllerRequest = viewRequest.View.View(model: viewRequest.Model);
             }
         }
     }

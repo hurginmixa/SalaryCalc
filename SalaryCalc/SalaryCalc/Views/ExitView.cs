@@ -4,9 +4,9 @@ using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Views
 {
-    internal class ExitView
+    internal class ExitView : ViewBase
     {
-        public ViewResultController View()
+        public override ControllerRequest View(object model)
         {
             Console.Clear();
             Console.CursorVisible = false;

@@ -6,14 +6,19 @@ namespace SalaryCalc.Controllers
 {
     internal class LoginController : Controller
     {
-        public override ViewResultController Run(ViewResult viewResult)
+        public override ViewRequest Run(ViewResult viewResult)
         {
-            if (viewResult.InputFieldResult == eInputFieldResult.Cancel)
+            if (viewResult.Fields.Count() == 0)
             {
-                return new ExitView().View();
+                return new ViewRequest(new LoginView());
             }
 
-            return new ManagerMainView().View();
+            if (viewResult.InputFieldResult == eInputFieldResult.Cancel)
+            {
+                return new ViewRequest(new ExitView());
+            }
+
+            return new ViewRequest(new ManagerMainView());
         }
     }
 }

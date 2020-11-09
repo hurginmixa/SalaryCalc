@@ -46,5 +46,7 @@ namespace SalaryCalc.Views.ViewFields
         }
 
         public IEnumerable<Field> List => _fields;
+
+        public int Count() => _fields.Count;
     }
 }

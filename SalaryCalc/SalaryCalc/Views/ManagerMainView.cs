@@ -4,9 +4,9 @@ using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Views
 {
-    internal class ManagerMainView
+    internal class ManagerMainView : ViewBase
     {
-        public ViewResultController View()
+        public override ControllerRequest View(object model)
         {
             Console.Clear();
             Console.CursorVisible = false;
@@ -21,7 +21,7 @@ namespace SalaryCalc.Views
 
             var inputFieldResult = fields.Input();
 
-            return new ViewResultController(inputFieldResult, fields, new ManagerMainController());
+            return new ControllerRequest(inputFieldResult, fields, new ManagerMainController());
         }
     }
 }
