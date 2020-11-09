@@ -5,7 +5,7 @@ namespace SalaryCalc.Controllers
 {
     internal class ControllerRequest
     {
-        public ControllerRequest(eInputFieldResult inputFieldResult, FieldList fields, Controller controller)
+        public ControllerRequest(eInputFieldResult inputFieldResult, FieldList fields, ControllerBase controller)
         {
             ViewResult = new ViewResult(inputFieldResult, fields);
 
@@ -14,6 +14,6 @@ namespace SalaryCalc.Controllers
 
         public ViewResult ViewResult { get; }
 
-        public Controller Controller { get; }
+        public ControllerBase Controller { get; }
     }
 }

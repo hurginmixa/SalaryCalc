@@ -2,21 +2,26 @@
 
 namespace SalaryCalc.Controllers
 {
-    internal class ViewRequest
+    internal abstract class ViewRequestBase
     {
-        public ViewRequest(ViewBase view, object model)
-        {
-            View = view;
+        public abstract ViewBase View { get; }
+        
+        public abstract object Model { get; }
+    }
 
+    internal class ViewRequest<T> : ViewRequestBase where T : ViewBase, new()
+    {
+        public ViewRequest(object model)
+        {
             Model = model;
         }
 
-        public ViewRequest(ViewBase view) : this(view, null)
+        public ViewRequest() : this(null)
         {
         }
 
-        public ViewBase View { get; }
+        public override ViewBase View => new T();
         
-        public object Model { get; }
+        public override object Model { get; }
     }
 }

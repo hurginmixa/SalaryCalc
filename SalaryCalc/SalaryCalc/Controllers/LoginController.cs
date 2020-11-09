@@ -4,21 +4,21 @@ using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Controllers
 {
-    internal class LoginController : Controller
+    internal class LoginController : ControllerBase
     {
-        public override ViewRequest Run(ViewResult viewResult)
+        public override ViewRequestBase Run(ViewResult viewResult)
         {
             if (viewResult.Fields.Count() == 0)
             {
-                return new ViewRequest(new LoginView());
+                return new ViewRequest<LoginView>();
             }
 
             if (viewResult.InputFieldResult == eInputFieldResult.Cancel)
             {
-                return new ViewRequest(new ExitView());
+                return new ViewRequest<ExitView>();
             }
 
-            return new ViewRequest(new ManagerMainView());
+            return new ViewRequest<ManagerMainView>();
         }
     }
 }

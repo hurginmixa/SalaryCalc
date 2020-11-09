@@ -5,23 +5,28 @@ using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Controllers
 {
-    internal class ManagerMainController : Controller
+    internal class ManagerMainController : ControllerBase
     {
-        public override ViewRequest Run(ViewResult viewResult)
+        public override ViewRequestBase Run(ViewResult viewResult)
         {
-            if (viewResult.InputFieldResult != eInputFieldResult.Ok)
+            if (viewResult.Fields.Count() == 0)
             {
-                return new ViewRequest(new ExitView());
+                return new ViewRequest<ManagerMainView>();
             }
 
-            var choose = (viewResult.Fields.List.First(f => f.Name == "Choose").Value ?? "");
+            if (viewResult.InputFieldResult != eInputFieldResult.Ok)
+            {
+                return new ViewRequest<ExitView>();
+            }
+
+            var choose = viewResult.Fields["Choose"].Value;
 
             if (choose == "0")
             {
-                return new ViewRequest(new ExitView());
+                return new ViewRequest<ExitView>();
             }
 
-            return new ViewRequest(new ManagerMainView());
+            return new ViewRequest<ManagerMainView>();
         }
     }
 }

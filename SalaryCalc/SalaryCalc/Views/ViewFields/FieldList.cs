@@ -48,5 +48,7 @@ namespace SalaryCalc.Views.ViewFields
         public IEnumerable<Field> List => _fields;
 
         public int Count() => _fields.Count;
+
+        public Field this[string name] => _fields.Find(f => f.Name == name);
     }
 }
