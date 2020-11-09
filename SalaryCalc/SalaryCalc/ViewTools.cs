@@ -14,27 +14,23 @@ namespace SalaryCalc
             Esc
         }
 
-        public static string Prompt(int left, int top, int length, string prev, string prompt, out eInputResult inputResult)
-        {
-            Txt(left: left, top: top, text: prompt);
-            return Input(left: left + prompt.Length, top: top, length: length, prev: prev, inputResult: out inputResult);
-        }
-
         public static void Txt(int left, int top, string text)
         {
             Console.SetCursorPosition(left: left, top: top);
             Console.Write(text);
         }
 
-        public static string Input(int left, int top, int length, string prev, out eInputResult inputResult)
+        public static void Txt(int left, int top, int length, string text)
         {
-            prev = prev.Trim();
-            if (prev.Length > length)
-            {
-                prev = prev.Substring(0, length);
-            }
+            Console.SetCursorPosition(left: left, top: top);
+            Console.Write(PrepareText(text, length));
+        }
 
-            prev = prev.PadRight(length);
+        public static string Input(int left, int top, int length, string prev, ConsoleColor color, out eInputResult inputResult)
+        {
+            Console.ForegroundColor = color;
+
+            prev = PrepareText(prev, length);
             StringBuilder txt = new StringBuilder(prev);
 
             void RefreshText()
@@ -100,7 +96,7 @@ namespace SalaryCalc
                 
                 else if (keyInfo.Key == ConsoleKey.End)
                 {
-                    pos = length - 1;
+                    pos = Math.Min(txt.ToString().TrimEnd().Length, length - 1);
                 }
 
                 else if (pos < length)
@@ -140,7 +136,22 @@ namespace SalaryCalc
                 Console.SetCursorPosition(left: left + pos, top: top);
             }
 
+            Console.ResetColor();
+            RefreshText();
+
             return txt.ToString();
+        }
+
+        private static string PrepareText(string text, int length)
+        {
+            text = text.Trim();
+            if (text.Length > length)
+            {
+                text = text.Substring(0, length);
+            }
+
+            text = text.PadRight(length);
+            return text;
         }
     }
 }
