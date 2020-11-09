@@ -22,8 +22,7 @@ namespace SalaryCalc
 
         public static void Txt(int left, int top, int length, string text)
         {
-            Console.SetCursorPosition(left: left, top: top);
-            Console.Write(PrepareText(text, length));
+            Txt(left:left, top: top, text: PrepareText(text, length));
         }
 
         public static string Input(int left, int top, int length, string prev, ConsoleColor color, out eInputResult inputResult)
@@ -46,28 +45,7 @@ namespace SalaryCalc
             Console.CursorVisible = true;
             Console.SetCursorPosition(left: left, top: top);
 
-            eInputResult InputResult(out ConsoleKeyInfo keyInfo)
-            {
-                keyInfo = Console.ReadKey(intercept: true);
-
-                switch (keyInfo.Key)
-                {
-                    case ConsoleKey.Enter:
-                        return eInputResult.Ok;
-
-                    case ConsoleKey.Escape:
-                        return eInputResult.Esc;
-
-                    case ConsoleKey.Tab:
-                        return keyInfo.Modifiers != ConsoleModifiers.Shift ? eInputResult.Tab : eInputResult.ShiftTab;
-
-                    default:
-                        return eInputResult.None;
-                }
-            }
-
-
-            while ((inputResult = InputResult(out var keyInfo)) == eInputResult.None)
+            while ((inputResult = ReadKey(out var keyInfo)) == eInputResult.None)
             {
                 if (keyInfo.Key == ConsoleKey.LeftArrow)
                 {
@@ -140,6 +118,55 @@ namespace SalaryCalc
             RefreshText();
 
             return txt.ToString();
+        }
+
+        public static eInputResult WaitToOk(int left, int top, ConsoleColor color, string text)
+        {
+            Console.CursorVisible = false;
+
+            Console.ForegroundColor = color;
+            Console.SetCursorPosition(left: left, top: top);
+            Console.Write(text);
+
+            try
+            {
+                eInputResult inputResult;
+                while ((inputResult = ReadKey(out _)) == eInputResult.None)
+                {
+                }
+                return inputResult;
+            }
+            finally
+            {
+                Console.ResetColor();
+                Console.SetCursorPosition(left: left, top: top);
+                Console.Write(text);
+            }
+        }
+
+        public static eInputResult WaitToOk(int left, int top, int length, ConsoleColor color, string text)
+        {
+            return WaitToOk(left: left, top: top, color: color, text: PrepareText(text, length));
+        }
+
+        private static eInputResult ReadKey(out ConsoleKeyInfo keyInfo)
+        {
+            keyInfo = Console.ReadKey(intercept: true);
+
+            switch (keyInfo.Key)
+            {
+                case ConsoleKey.Enter:
+                    return eInputResult.Ok;
+
+                case ConsoleKey.Escape:
+                    return eInputResult.Esc;
+
+                case ConsoleKey.Tab:
+                    return keyInfo.Modifiers != ConsoleModifiers.Shift ? eInputResult.Tab : eInputResult.ShiftTab;
+
+                default:
+                    return eInputResult.None;
+            }
         }
 
         private static string PrepareText(string text, int length)

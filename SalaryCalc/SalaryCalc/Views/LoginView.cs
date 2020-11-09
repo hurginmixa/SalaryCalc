@@ -1,33 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Views
 {
     internal class LoginView
     {
-        private class Field
-        {
-            public Field(int left, int top, int length, string name, string text)
-            {
-                Left = left;
-                Top = top;
-                Name = name;
-                Text = text;
-                Length = length;
-            }
-
-            public int Left{ get; }
-            public int Top{ get; }
-            public int Length { get; }
-            public string Name { get; }
-            public string Text { get; set; }
-        }
-
-        readonly Field[] _fields = new Field[2];
+        readonly List<Field> _fields = new List<Field>();
 
         public LoginView()
         {
-            _fields[0] = new Field(top: 4, left:13, length: 15, name: "First Name", text: "");
-            _fields[1] = new Field(top: 5, left:13, length: 15, name: "Second Name", text: "");
+            _fields.Add(new TextField(top: 4, left: 13, length: 15, name: "First Name", text: ""));
+            _fields.Add(new TextField(top: 5, left: 13, length: 15, name: "Second Name", text: ""));
+            _fields.Add(new WaitOkField(top: 6, left: 3, name: "Ok", text: "[ Ok ]"));
         }
 
         public void View()
@@ -40,28 +25,31 @@ namespace SalaryCalc.Views
             ViewTools.Txt(top: 4, left: 3, text: "Имя     :");
             ViewTools.Txt(top: 5, left: 3, text: "Фамилия :");
 
+            foreach (var field in _fields)
+            {
+                field.Draw();
+            }
+
             int iCurrentFiend = 0;
 
             var currentFiend = _fields[iCurrentFiend];
 
-            var newText = ViewTools.Input(left: currentFiend.Left, top: currentFiend.Top, length: currentFiend.Length, prev: currentFiend.Text, color: ConsoleColor.Yellow, inputResult: out var inputResult);
+            eInputFieldResult inputFieldResult = currentFiend.Input();
 
-            while (inputResult != ViewTools.eInputResult.Esc)
+            while (inputFieldResult != eInputFieldResult.Ok && inputFieldResult != eInputFieldResult.Cancel)
             {
-                currentFiend.Text = newText;
-
-                if (inputResult == ViewTools.eInputResult.ShiftTab)
+                if (inputFieldResult == eInputFieldResult.PrevField)
                 {
-                    iCurrentFiend = iCurrentFiend > 0 ? iCurrentFiend - 1 : _fields.Length - 1;
+                    iCurrentFiend = iCurrentFiend > 0 ? iCurrentFiend - 1 : _fields.Count - 1;
                 }
                 else
                 {
-                    iCurrentFiend = iCurrentFiend >= _fields.Length - 1 ? 0 : iCurrentFiend + 1;
+                    iCurrentFiend = iCurrentFiend >= _fields.Count - 1 ? 0 : iCurrentFiend + 1;
                 }
 
                 currentFiend = _fields[iCurrentFiend];
 
-                newText = ViewTools.Input(left: currentFiend.Left, top: currentFiend.Top, length: currentFiend.Length, prev: currentFiend.Text, color: ConsoleColor.Yellow, inputResult: out inputResult);
+                inputFieldResult = currentFiend.Input();
             }
         }
     }
