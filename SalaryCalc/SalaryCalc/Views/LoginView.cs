@@ -13,20 +13,27 @@ namespace SalaryCalc.Views
             Console.Clear();
             Console.CursorVisible = false;
 
-            ViewTools.Txt(top: 2, left: 3, text: "Добро пожаловать, представтесь пожалуйста");
-            ViewTools.Txt(top: 3, left: 3, text: "--------------------------------------------");
-            ViewTools.Txt(top: 4, left: 3, text: "Имя     :");
-            ViewTools.Txt(top: 5, left: 3, text: "Фамилия :");
+            FieldList fields = new FieldList();
 
-            FieldList fields = new FieldList()
-                .Add(new EditField(top: 4, left: 13, length: 15, name: "FirstName", text: ""))
-                .Add(new EditField(top: 5, left: 13, length: 15, name: "LastName", text: ""))
-                .Add(new WaitOkField(top: 6, left: 3, name: "Ok", text: "[ Ok ]"));
+            int left = 3;
+            int pos = 2;
+            ViewTools.Txt(top: pos++, left: left, text: "Добро пожаловать, представтесь пожалуйста");
+            ViewTools.Txt(top: pos++, left: left, text: "--------------------------------------------");
+            
+            ViewTools.Txt(top: pos, left: left, text: "Имя     :");
+            fields.Add(new EditField(top: pos++, left: left + 10, length: 15, name: "FirstName", text: ""));
+
+            ViewTools.Txt(top: pos, left: left, text: "Фамилия :");
+            fields.Add(new EditField(top: pos++, left: left + 10, length: 15, name: "LastName", text: ""));
+
+            pos++;
+            fields.Add(new WaitOkField(top: pos++, left: left, name: "Ok", text: "[ Ok ]"));
 
             if (model is string message && !string.IsNullOrWhiteSpace(message))
             {
+                pos++;
                 Console.ForegroundColor = ConsoleColor.Red;
-                ViewTools.Txt(top: 8, left: 3, length: 20, text: message);
+                ViewTools.Txt(top: pos++, left: 3, length: 20, text: message);
                 Console.ResetColor();
             }
 

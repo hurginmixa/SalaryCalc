@@ -1,4 +1,5 @@
 ﻿using PersonsService;
+using SalaryCalc.Models;
 using SalaryCalc.Views;
 using SalaryCalc.Views.ViewClasses;
 using SalaryCalc.Views.ViewFields;
@@ -26,9 +27,14 @@ namespace SalaryCalc.Controllers
                 return new ViewRequest<LoginView>("User not found");
             }
 
+            ApplicationData.CurrentData.StartNewSession(person);
 
+            if (person.Role == Role.Manager)
+            {
+                return new ViewRequest<ManagerMainView>();
+            }
 
-            return new ViewRequest<ManagerMainView>();
+            return new ViewRequest<UserMainView>();
         }
     }
 }

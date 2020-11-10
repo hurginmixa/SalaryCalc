@@ -17,17 +17,21 @@ namespace SalaryCalc.Controllers
 
             if (viewResult.ViewStatus != eViewStatus.Ok)
             {
-                return new ViewRequest<ExitView>();
+                return new ViewRequest<ManagerMainView>();
             }
 
-            var choose = viewResult.Fields["Choose"].Value;
-
-            if (choose == "5")
+            string choose = viewResult.Fields["Choose"].Value;
+            switch (choose)
             {
-                return new ViewRequest<ExitView>();
-            }
+                case "5":
+                    return new ViewRequest<LoginView>();
 
-            return new ViewRequest<ManagerMainView>();
+                case "1":
+                    return new ViewRequest<ManagerAddNewPersonView>();
+                
+                default:
+                    return new ViewRequest<ManagerMainView>();
+            }
         }
     }
 }

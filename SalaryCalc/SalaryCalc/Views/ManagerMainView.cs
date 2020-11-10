@@ -1,5 +1,7 @@
 ﻿using System;
+using PersonsService;
 using SalaryCalc.Controllers;
+using SalaryCalc.Models;
 using SalaryCalc.Views.ViewClasses;
 using SalaryCalc.Views.ViewFields;
 
@@ -12,17 +14,23 @@ namespace SalaryCalc.Views
             Console.Clear();
             Console.CursorVisible = false;
 
-            ViewTools.Txt(top: 2, left: 3, text: "Главный экран Менеджера");
-            ViewTools.Txt(top: 3, left: 3, text: "--------------------------------------------");
-            ViewTools.Txt(top: 5, left: 3, text: "(1). Добавить сотрудника");
-            ViewTools.Txt(top: 6, left: 3, text: "(2). Просмотреть отчет по всем сотрудникам");
-            ViewTools.Txt(top: 7, left: 3, text: "(3). Просмотреть отчет по конкретному сотруднику");
-            ViewTools.Txt(top: 8, left: 3, text: "(4). Добавить часы работы");
-            ViewTools.Txt(top: 9, left: 3, text: "(5). Выход из программы");
+            IPerson currentUser = ApplicationData.CurrentData.CurrentPerson;
 
-            ViewTools.Txt(top: 11, left: 3, text: "Ваш выбор : ");
+            int left = 3;
+            int pos = 2;
+            ViewTools.Txt(top: pos++, left: left, text: "Главный экран Менеджера");
+            ViewTools.Txt(top: pos++, left: left, text: $"Пользователь: {currentUser.FirstName}, {currentUser.LastName}");
+            ViewTools.Txt(top: pos++, left: left, text: "--------------------------------------------");
+            pos++;
+            ViewTools.Txt(top: pos++, left: left, text: "(1). Добавить сотрудника");
+            ViewTools.Txt(top: pos++, left: left, text: "(2). Просмотреть отчет по всем сотрудникам");
+            ViewTools.Txt(top: pos++, left: left, text: "(3). Просмотреть отчет по конкретному сотруднику");
+            ViewTools.Txt(top: pos++, left: left, text: "(4). Добавить часы работы");
+            ViewTools.Txt(top: pos++, left: left, text: "(5). Выход из программы");
+            pos++;
+            ViewTools.Txt(top: pos++, left: left, text: "Ваш выбор : ");
 
-            FieldList fields = new FieldList().Add(new ChooseField(top: 11, left: 13, name: "Choose"));
+            FieldList fields = new FieldList().Add(new ChooseField(top: 12, left: 13, name: "Choose"));
 
             var inputFieldResult = fields.Input();
 
