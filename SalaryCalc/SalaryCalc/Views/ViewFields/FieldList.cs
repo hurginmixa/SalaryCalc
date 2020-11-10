@@ -46,10 +46,6 @@ namespace SalaryCalc.Views.ViewFields
             return inputFieldResult == eInputFieldResult.Ok ? eViewStatus.Ok : eViewStatus.Cancel;
         }
 
-        public IEnumerable<Field> List => _fields;
-
-        public int Count() => _fields.Count;
-
-        public Field this[string name] => _fields.Find(f => f.Name == name);
+        public ResultValueList ToResultValueList() => new ResultValueList(_fields);
     }
 }

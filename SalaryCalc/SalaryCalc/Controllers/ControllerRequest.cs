@@ -3,23 +3,23 @@ using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Controllers
 {
-    internal abstract class ControllerRequestBase
+    internal abstract class ControllerRequest
     {
         private readonly ViewResult _viewResult;
 
-        protected ControllerRequestBase(eViewStatus viewStatus, FieldList fields)
+        protected ControllerRequest(eViewStatus viewStatus, ResultValueList fields)
         {
             _viewResult = new ViewResult(viewStatus, fields);
         }
 
-        public ViewRequestBase RunController() => Controller.Run(_viewResult);
+        public ViewRequest RunController() => Controller.Run(_viewResult);
 
         protected abstract ControllerBase Controller { get; }
     }
 
-    internal class ControllerRequest<TControllerBase> : ControllerRequestBase where TControllerBase : ControllerBase, new()
+    internal class ControllerRequest<TControllerBase> : ControllerRequest where TControllerBase : ControllerBase, new()
     {
-        public ControllerRequest(eViewStatus viewStatus, FieldList fields) : base(viewStatus, fields)
+        public ControllerRequest(eViewStatus viewStatus, ResultValueList fields) : base(viewStatus, fields)
         {
         }
 
