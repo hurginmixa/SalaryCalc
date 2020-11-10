@@ -20,6 +20,6 @@ namespace SalaryCalc.Views.ViewClasses
 
         public int Count() => _list.Count;
 
-        public ResultValue this[string name] => _list.First(v => v.Name == name);
+        public string this[string name] => _list.First(v => v.Name == name).Value;
     }
 }

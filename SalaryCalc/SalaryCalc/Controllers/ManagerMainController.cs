@@ -10,7 +10,7 @@ namespace SalaryCalc.Controllers
     {
         public override ViewRequest Run(ViewResult viewResult)
         {
-            if (viewResult.Fields.Count() == 0)
+            if (viewResult.Values.Count() == 0)
             {
                 return new ViewRequest<ManagerMainView>();
             }
@@ -20,7 +20,7 @@ namespace SalaryCalc.Controllers
                 return new ViewRequest<ManagerMainView>();
             }
 
-            string choose = viewResult.Fields["Choose"].Value;
+            string choose = viewResult.Values["Choose"];
             switch (choose)
             {
                 case "5":

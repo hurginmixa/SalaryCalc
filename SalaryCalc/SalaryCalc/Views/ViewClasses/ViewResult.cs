@@ -2,14 +2,14 @@
 {
     internal class ViewResult
     {
-        public ViewResult(eViewStatus viewStatus, ResultValueList fields)
+        public ViewResult(eViewStatus viewStatus, ResultValueList values)
         {
             ViewStatus = viewStatus;
-            Fields = fields;
+            Values = values;
         }
 
         public eViewStatus ViewStatus { get; }
 
-        public ResultValueList Fields { get; }
+        public ResultValueList Values { get; }
     }
 }

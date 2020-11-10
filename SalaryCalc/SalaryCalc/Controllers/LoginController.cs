@@ -10,7 +10,7 @@ namespace SalaryCalc.Controllers
     {
         public override ViewRequest Run(ViewResult viewResult)
         {
-            if (viewResult.Fields.Count() == 0)
+            if (viewResult.Values.Count() == 0)
             {
                 return new ViewRequest<LoginView>();
             }
@@ -22,9 +22,9 @@ namespace SalaryCalc.Controllers
 
             IPersonService personService = PersonsServiceFactory.Service();
 
-            if (personService.GetPerson(viewResult.Fields["FirstName"].Value, viewResult.Fields["LastName"].Value, out IPerson person) != PersonServiceResult.Success)
+            if (personService.GetPerson(viewResult.Values["FirstName"], viewResult.Values["LastName"], out IPerson person) != PersonServiceResult.Success)
             {
-                return new ViewRequest<LoginView>("User not found");
+                return new ViewRequest<LoginView>(new ViewInput("User not found"));
             }
 
             ApplicationData.CurrentData.StartNewSession(person);

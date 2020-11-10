@@ -12,7 +12,7 @@ namespace SalaryCalc.Controllers
                 return new ViewRequest<ManagerMainView>();
             }
 
-            throw new System.NotImplementedException();
+            return new ViewRequest<ManagerAddNewPersonView>(new ViewInput("Bad User", viewResult.Values));
         }
     }
 }

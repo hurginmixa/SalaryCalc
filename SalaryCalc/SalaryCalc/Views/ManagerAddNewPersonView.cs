@@ -11,24 +11,41 @@ namespace SalaryCalc.Views
     {
         public override ControllerRequest View(object model)
         {
+            ViewInput input = (ViewInput) model;
+
             Console.Clear();
             Console.CursorVisible = false;
 
             IPerson currentUser = ApplicationData.CurrentData.CurrentPerson;
 
-            ViewTools.Txt(top: 2, left: 3, text: "Добавление нового сотрудника");
-            ViewTools.Txt(top: 3, left: 3, text: $"Пользователь: {currentUser.FirstName}, {currentUser.LastName}");
-            ViewTools.Txt(top: 4, left: 3, text: "--------------------------------------------");
+            FieldList fields = new FieldList();
 
-            ViewTools.Txt(top: 6, left: 3, text: "Имя            :");
-            ViewTools.Txt(top: 7, left: 3, text: "Фамилия        :");
-            ViewTools.Txt(top: 8, left: 3, text: "Роль (1, 2, 3) :");
+            int left = 3;
+            int top = 2;
 
-            FieldList fields = new FieldList()
-                .Add(new EditField(top: 6, left: 19, length: 15, name: "FirstName", text: ""))
-                .Add(new EditField(top: 7, left: 19, length: 15, name: "LastName", text: ""))
-                .Add(new EditField(top: 8, left: 19, length: 15, name: "Role", text: ""))
-                .Add(new WaitOkField(top: 9, left: 17, name: "Ok", text: "[ Ok ]"));
+            ViewTools.Txt(top: top++, left: left, text: "Добавление нового сотрудника");
+            ViewTools.Txt(top: top++, left: left, text: $"Пользователь: {currentUser.FirstName}, {currentUser.LastName}");
+            ViewTools.Txt(top: top++, left: left, text: "--------------------------------------------");
+            top++;
+            ViewTools.Txt(top: top, left: left, text: "Имя            :");
+            fields.Add(new EditField(top: top++, left: left + 16, length: 15, name: "FirstName", text: input?.Values["FirstName"] ?? ""));
+
+            ViewTools.Txt(top: top, left: left, text: "Фамилия        :");
+            fields.Add(new EditField(top: top++, left: left + 16, length: 15, name: "LastName", text: input?.Values["LastName"] ?? ""));
+
+            ViewTools.Txt(top: top, left: left, text: "Роль (1, 2, 3) :");
+            fields.Add(new EditField(top: top++, left: left + 16, length: 1, name: "Role", text: input?.Values["Role"] ?? ""));
+
+            top++;
+            fields.Add(new WaitOkField(top: top++, left: left, name: "Ok", text: "[ Ok ]"));
+
+            if (!string.IsNullOrWhiteSpace(input?.Message))
+            {
+                top++;
+                Console.ForegroundColor = ConsoleColor.Red;
+                ViewTools.Txt(top: top++, left: left, length: 20, text: input.Message);
+                Console.ResetColor();
+            }
 
             var viewStatus = fields.Input();
 

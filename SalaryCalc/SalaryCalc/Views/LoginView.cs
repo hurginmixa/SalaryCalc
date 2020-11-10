@@ -10,30 +10,32 @@ namespace SalaryCalc.Views
     {
         public override ControllerRequest View(object model)
         {
+            ViewInput input = (ViewInput) model;
+
             Console.Clear();
             Console.CursorVisible = false;
 
             FieldList fields = new FieldList();
 
             int left = 3;
-            int pos = 2;
-            ViewTools.Txt(top: pos++, left: left, text: "Добро пожаловать, представтесь пожалуйста");
-            ViewTools.Txt(top: pos++, left: left, text: "--------------------------------------------");
+            int top = 2;
+            ViewTools.Txt(top: top++, left: left, text: "Добро пожаловать, представтесь пожалуйста");
+            ViewTools.Txt(top: top++, left: left, text: "--------------------------------------------");
             
-            ViewTools.Txt(top: pos, left: left, text: "Имя     :");
-            fields.Add(new EditField(top: pos++, left: left + 10, length: 15, name: "FirstName", text: ""));
+            ViewTools.Txt(top: top, left: left, text: "Имя     :");
+            fields.Add(new EditField(top: top++, left: left + 10, length: 15, name: "FirstName", text: ""));
 
-            ViewTools.Txt(top: pos, left: left, text: "Фамилия :");
-            fields.Add(new EditField(top: pos++, left: left + 10, length: 15, name: "LastName", text: ""));
+            ViewTools.Txt(top: top, left: left, text: "Фамилия :");
+            fields.Add(new EditField(top: top++, left: left + 10, length: 15, name: "LastName", text: ""));
 
-            pos++;
-            fields.Add(new WaitOkField(top: pos++, left: left, name: "Ok", text: "[ Ok ]"));
+            top++;
+            fields.Add(new WaitOkField(top: top++, left: left, name: "Ok", text: "[ Ok ]"));
 
-            if (model is string message && !string.IsNullOrWhiteSpace(message))
+            if (!string.IsNullOrWhiteSpace(input?.Message))
             {
-                pos++;
+                top++;
                 Console.ForegroundColor = ConsoleColor.Red;
-                ViewTools.Txt(top: pos++, left: 3, length: 20, text: message);
+                ViewTools.Txt(top: top++, left: 3, length: 20, text: input.Message);
                 Console.ResetColor();
             }
 
