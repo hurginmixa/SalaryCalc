@@ -29,12 +29,7 @@ namespace SalaryCalc.Controllers
 
             ApplicationData.CurrentData.StartNewSession(person);
 
-            if (person.Role == Role.Manager)
-            {
-                return new ViewRequest<ManagerMainView>();
-            }
-
-            return new ViewRequest<UserMainView>();
+            return ApplicationData.CurrentData.GetMainViewForCurrentPearson();
         }
     }
 }

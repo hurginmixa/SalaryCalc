@@ -27,10 +27,10 @@ namespace SalaryCalc.Views
             ViewTools.Txt(top: pos++, left: left, text: "(3). Просмотреть отчет по конкретному сотруднику");
             ViewTools.Txt(top: pos++, left: left, text: "(4). Добавить часы работы");
             ViewTools.Txt(top: pos++, left: left, text: "(5). Выход из программы");
+            ViewTools.Txt(top: pos++, left: left, text: "(6). Сменить пользователя");
             pos++;
-            ViewTools.Txt(top: pos++, left: left, text: "Ваш выбор : ");
-
-            FieldList fields = new FieldList().Add(new ChooseField(top: 12, left: 13, name: "Choose"));
+            ViewTools.Txt(top: pos, left: left, text: "Ваш выбор : ");
+            FieldList fields = new FieldList().Add(new ChooseField(top: pos++, left: left + 13, name: "Choose"));
 
             var inputFieldResult = fields.Input();
 

@@ -1,4 +1,6 @@
 ﻿using PersonsService;
+using SalaryCalc.Controllers;
+using SalaryCalc.Views;
 using SessionsService;
 
 namespace SalaryCalc.Models
@@ -22,5 +24,17 @@ namespace SalaryCalc.Models
         public IPerson CurrentPerson => CurrentSession.Person;
 
         public ISession CurrentSession => _currentSession;
+
+        public ViewRequest GetMainViewForCurrentPearson()
+        {
+            var person = CurrentSession.Person;
+
+            if (person.Role == Role.Manager)
+            {
+                return new ViewRequest<ManagerMainView>();
+            }
+
+            return new ViewRequest<UserMainView>();
+        }
     }
 }
