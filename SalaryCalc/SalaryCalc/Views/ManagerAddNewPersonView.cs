@@ -9,7 +9,7 @@ namespace SalaryCalc.Views
 {
     class ManagerAddNewPersonView : ViewBase
     {
-        public override ControllerRequestBase View(object model)
+        public override ControllerRequest View(object model)
         {
             Console.Clear();
             Console.CursorVisible = false;
@@ -32,7 +32,7 @@ namespace SalaryCalc.Views
 
             var viewStatus = fields.Input();
 
-            return new ControllerRequest<ManagerAddNewPersonController>(viewStatus, fields);
+            return new ControllerRequest<ManagerAddNewPersonController>(viewStatus, fields.ToResultValueList());
         }
     }
 }

@@ -5,7 +5,7 @@ namespace SalaryCalc.Controllers
 {
     class ManagerAddNewPersonController : ControllerBase
     {
-        public override ViewRequestBase Run(ViewResult viewResult)
+        public override ViewRequest Run(ViewResult viewResult)
         {
             if (viewResult.ViewStatus == eViewStatus.Cancel)
             {

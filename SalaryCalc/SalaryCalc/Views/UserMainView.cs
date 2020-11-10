@@ -5,7 +5,7 @@ namespace SalaryCalc.Views
 {
     internal class UserMainView : ViewBase
     {
-        public override ControllerRequestBase View(object model)
+        public override ControllerRequest View(object model)
         {
             throw new System.NotImplementedException();
         }

@@ -4,6 +4,6 @@ namespace SalaryCalc.Views.ViewClasses
 {
     internal abstract class ViewBase
     {
-        public abstract ControllerRequestBase View(object model);
+        public abstract ControllerRequest View(object model);
     }
 }

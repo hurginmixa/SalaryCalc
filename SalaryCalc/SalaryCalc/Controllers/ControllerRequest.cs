@@ -7,9 +7,9 @@ namespace SalaryCalc.Controllers
     {
         private readonly ViewResult _viewResult;
 
-        protected ControllerRequest(eViewStatus viewStatus, ResultValueList fields)
+        protected ControllerRequest(eViewStatus viewStatus, ResultValueList valueList)
         {
-            _viewResult = new ViewResult(viewStatus, fields);
+            _viewResult = new ViewResult(viewStatus, valueList);
         }
 
         public ViewRequest RunController() => Controller.Run(_viewResult);
@@ -19,7 +19,7 @@ namespace SalaryCalc.Controllers
 
     internal class ControllerRequest<TControllerBase> : ControllerRequest where TControllerBase : ControllerBase, new()
     {
-        public ControllerRequest(eViewStatus viewStatus, ResultValueList fields) : base(viewStatus, fields)
+        public ControllerRequest(eViewStatus viewStatus, ResultValueList valueList) : base(viewStatus, valueList)
         {
         }
 

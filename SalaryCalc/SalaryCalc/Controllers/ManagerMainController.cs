@@ -8,7 +8,7 @@ namespace SalaryCalc.Controllers
 {
     internal class ManagerMainController : ControllerBase
     {
-        public override ViewRequestBase Run(ViewResult viewResult)
+        public override ViewRequest Run(ViewResult viewResult)
         {
             if (viewResult.Fields.Count() == 0)
             {

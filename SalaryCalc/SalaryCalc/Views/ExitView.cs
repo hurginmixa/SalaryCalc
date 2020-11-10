@@ -6,7 +6,7 @@ namespace SalaryCalc.Views
 {
     internal class ExitView : ViewBase
     {
-        public override ControllerRequestBase View(object model)
+        public override ControllerRequest View(object model)
         {
             Console.Clear();
             Console.CursorVisible = false;

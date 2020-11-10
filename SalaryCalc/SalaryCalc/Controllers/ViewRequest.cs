@@ -3,19 +3,19 @@ using SalaryCalc.Views.ViewClasses;
 
 namespace SalaryCalc.Controllers
 {
-    internal abstract class ViewRequestBase
+    internal abstract class ViewRequest
     {
         protected abstract ViewBase View { get; }
 
         protected abstract object Model { get; }
 
-        public ControllerRequestBase RunView()
+        public ControllerRequest RunView()
         {
             return View.View(model: Model);
         }
     }
 
-    internal class ViewRequest<T> : ViewRequestBase where T : ViewBase, new()
+    internal class ViewRequest<T> : ViewRequest where T : ViewBase, new()
     {
         public ViewRequest(object model)
         {

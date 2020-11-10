@@ -6,6 +6,6 @@ namespace SalaryCalc.Controllers
 {
     internal abstract class ControllerBase
     {
-        public abstract ViewRequestBase Run(ViewResult viewResult);
+        public abstract ViewRequest Run(ViewResult viewResult);
     }
 }
