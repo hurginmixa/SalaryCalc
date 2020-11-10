@@ -4,6 +4,7 @@
     {
         Success,
         PersonIsNotFound,
-        AlreadyExist
+        AlreadyExist,
+        AccessDenied
     }
 }

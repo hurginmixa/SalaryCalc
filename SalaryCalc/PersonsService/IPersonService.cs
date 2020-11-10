@@ -6,6 +6,6 @@
 
         PersonServiceResult GetPerson(string firstName, string lastName, out IPerson person);
 
-        PersonServiceResult AddNewPerson(string firstName, string lastName, Role role);
+        PersonServiceResult GetAddlingPerson(IPerson actor, out IAddlingPerson addlingPerson);
     }
 }

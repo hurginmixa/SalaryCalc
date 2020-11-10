@@ -43,7 +43,7 @@ namespace SalaryCalc.Views
             {
                 top++;
                 Console.ForegroundColor = ConsoleColor.Red;
-                ViewTools.Txt(top: top++, left: left, length: 20, text: input.Message);
+                ViewTools.Txt(top: top++, left: left, text: input.Message);
                 Console.ResetColor();
             }
 

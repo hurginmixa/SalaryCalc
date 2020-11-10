@@ -14,6 +14,9 @@ namespace SalaryCalc.Views
             ViewTools.Txt(top: 2, left: 3, text: "Всего хорошего, досвидания");
             ViewTools.Txt(top: 3, left: 3, text: "--------------------------------------------");
 
+
+            ViewTools.Txt(top: 13, left: 3, text: "");
+
             return null;
         }
     }

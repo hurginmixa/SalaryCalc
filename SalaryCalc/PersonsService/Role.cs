@@ -2,8 +2,8 @@
 {
     public enum Role
     {
-        Manager,
-        Worker,
-        Freelancer
+        Manager = 1,
+        Worker = 2,
+        Freelancer = 3
     }
 }
