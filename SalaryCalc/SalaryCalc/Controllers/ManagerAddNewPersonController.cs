@@ -1,5 +1,5 @@
 ﻿using InterfacesDefinitions.PersonsServiceInterfaces;
-using PersonsService;
+using MyHomeUnity;
 using SalaryCalc.Models;
 using SalaryCalc.Views;
 using SalaryCalc.Views.ViewClasses;
@@ -15,7 +15,7 @@ namespace SalaryCalc.Controllers
                 return new ViewRequest<ManagerMainView>();
             }
 
-            var personService = PersonsServiceFactory.Service();
+            var personService = Bootstrapper.Factory.GetInstance<IPersonService>();
 
             if (personService.GetAddlingPerson(ApplicationData.CurrentData.CurrentSession, out var addlingPerson) != PersonServiceResult.Success)
             {

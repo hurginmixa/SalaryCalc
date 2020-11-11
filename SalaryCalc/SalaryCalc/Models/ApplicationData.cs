@@ -1,9 +1,8 @@
 ﻿using InterfacesDefinitions.PersonsServiceInterfaces;
 using InterfacesDefinitions.SessionsServiceInterfaces;
-using PersonsService;
+using MyHomeUnity;
 using SalaryCalc.Controllers;
 using SalaryCalc.Views;
-using SessionsService;
 
 namespace SalaryCalc.Models
 {
@@ -20,7 +19,7 @@ namespace SalaryCalc.Models
 
         public void StartNewSession(IPerson person)
         {
-            _currentSession = SessionFactory.NewSession(person);
+            _currentSession = Bootstrapper.Factory.GetInstance<ISessionsService>().NewSessionForPerson(person);
         }
 
         public IPerson CurrentPerson => CurrentSession.Person;

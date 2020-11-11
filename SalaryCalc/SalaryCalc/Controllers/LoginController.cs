@@ -1,9 +1,8 @@
 ﻿using InterfacesDefinitions.PersonsServiceInterfaces;
-using PersonsService;
+using MyHomeUnity;
 using SalaryCalc.Models;
 using SalaryCalc.Views;
 using SalaryCalc.Views.ViewClasses;
-using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Controllers
 {
@@ -21,7 +20,7 @@ namespace SalaryCalc.Controllers
                 return new ViewRequest<ExitView>();
             }
 
-            IPersonService personService = PersonsServiceFactory.Service();
+            IPersonService personService = Bootstrapper.Factory.GetInstance<IPersonService>();
 
             if (personService.GetPerson(viewResult.Values["FirstName"], viewResult.Values["LastName"], out IPerson person) != PersonServiceResult.Success)
             {

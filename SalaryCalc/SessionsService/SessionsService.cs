@@ -3,8 +3,8 @@ using InterfacesDefinitions.SessionsServiceInterfaces;
 
 namespace SessionsService
 {
-    public static class SessionFactory
+    internal class SessionsService : ISessionsService
     {
-        public static ISession NewSession(IPerson person) => new Session(person);
+        public ISession NewSessionForPerson(IPerson person) => new Session(person);
     }
 }

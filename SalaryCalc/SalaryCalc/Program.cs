@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
+using MyHomeUnity;
 using SalaryCalc.Controllers;
 using SalaryCalc.Views.ViewClasses;
-using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc
 {
@@ -10,6 +10,8 @@ namespace SalaryCalc
     {
         public static void Main()
         {
+            Bootstrapper.LoadModules("SalaryCalc.xml");
+
             Console.OutputEncoding = Encoding.UTF8;
 
             ControllerRequest controllerRequest = new ControllerRequest<LoginController>(eViewStatus.None, new ResultValueList());

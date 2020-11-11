@@ -1,0 +1,5 @@
+﻿<ModuleCatalog xmlns="MyHomeUnity">
+    <ModuleInfo ModuleType="SessionsService.SessionFactoryInit" Ref="SessionsService.dll" />
+
+    <ModuleInfo ModuleType="PersonsService.PersonsServiceInit" Ref="PersonsService.dll" />
+</ModuleCatalog>
