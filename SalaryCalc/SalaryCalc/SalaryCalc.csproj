@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InterfacesDefinitions\InterfacesDefinitions.csproj" />
     <ProjectReference Include="..\PersonsService\PersonsService.csproj" />
     <ProjectReference Include="..\SessionsService\SessionsService.csproj" />
   </ItemGroup>

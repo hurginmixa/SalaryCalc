@@ -19,7 +19,7 @@ namespace SalaryCalc.Views
 
             int left = 3;
             int top = 2;
-            ViewTools.Txt(top: top++, left: left, text: "Добро пожаловать, представтесь пожалуйста");
+            ViewTools.Txt(top: top++, left: left, text: "Добро пожаловать, представьтесь пожалуйста");
             ViewTools.Txt(top: top++, left: left, text: "--------------------------------------------");
             
             ViewTools.Txt(top: top, left: left, text: "Имя     :");

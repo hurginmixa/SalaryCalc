@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using InterfacesDefinitions.PersonsServiceInterfaces;
+using InterfacesDefinitions.SessionsServiceInterfaces;
 
 namespace PersonsService
 {
@@ -23,9 +25,9 @@ namespace PersonsService
             return person != null ? PersonServiceResult.Success : PersonServiceResult.PersonIsNotFound;
         }
 
-        public PersonServiceResult GetAddlingPerson(IPerson actor, out IAddlingPerson addlingPerson)
+        public PersonServiceResult GetAddlingPerson(ISession session, out IAddlingPerson addlingPerson)
         {
-            if (actor.Role == Role.Manager)
+            if (session.Person.Role == Role.Manager)
             {
                 addlingPerson = this;
                 return PersonServiceResult.Success;

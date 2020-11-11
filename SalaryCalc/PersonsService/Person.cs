@@ -1,4 +1,6 @@
-﻿namespace PersonsService
+﻿using InterfacesDefinitions.PersonsServiceInterfaces;
+
+namespace PersonsService
 {
     internal class Person : IPerson
     {

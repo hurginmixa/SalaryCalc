@@ -1,4 +1,6 @@
-﻿namespace PersonsService
+﻿using InterfacesDefinitions.PersonsServiceInterfaces;
+
+namespace PersonsService
 {
     public class PersonsServiceFactory
     {

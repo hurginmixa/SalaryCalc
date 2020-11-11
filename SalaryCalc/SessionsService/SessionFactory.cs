@@ -1,4 +1,5 @@
-﻿using PersonsService;
+﻿using InterfacesDefinitions.PersonsServiceInterfaces;
+using InterfacesDefinitions.SessionsServiceInterfaces;
 
 namespace SessionsService
 {

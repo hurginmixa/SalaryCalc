@@ -1,4 +1,6 @@
-﻿using PersonsService;
+﻿using InterfacesDefinitions.PersonsServiceInterfaces;
+using InterfacesDefinitions.SessionsServiceInterfaces;
+using PersonsService;
 using SalaryCalc.Controllers;
 using SalaryCalc.Views;
 using SessionsService;

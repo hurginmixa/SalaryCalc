@@ -1,4 +1,5 @@
-﻿using PersonsService;
+﻿using InterfacesDefinitions.PersonsServiceInterfaces;
+using PersonsService;
 using SalaryCalc.Models;
 using SalaryCalc.Views;
 using SalaryCalc.Views.ViewClasses;
@@ -24,7 +25,7 @@ namespace SalaryCalc.Controllers
 
             if (personService.GetPerson(viewResult.Values["FirstName"], viewResult.Values["LastName"], out IPerson person) != PersonServiceResult.Success)
             {
-                return new ViewRequest<LoginView>(new ViewInput("User not found"));
+                return new ViewRequest<LoginView>(new ViewInput("Пользователь не найден"));
             }
 
             ApplicationData.CurrentData.StartNewSession(person);

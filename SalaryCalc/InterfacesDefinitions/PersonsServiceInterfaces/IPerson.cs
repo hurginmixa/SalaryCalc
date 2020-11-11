@@ -1,4 +1,4 @@
-﻿namespace PersonsService
+﻿namespace InterfacesDefinitions.PersonsServiceInterfaces
 {
     public interface IPerson
     {
