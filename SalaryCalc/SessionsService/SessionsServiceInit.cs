@@ -3,11 +3,11 @@ using MyHomeUnity;
 
 namespace SessionsService
 {
-    internal class SessionFactoryInit : IModuleInit
+    internal class SessionsServiceInit : IModuleInit
     {
         public void ClassFactoriesRegistration(IClassFactoryRegister register)
         {
-            register.AddFactory(() => (ISessionsService)new SessionsService());
+            register.AddFactoryForSingleton(() => (ISessionsService)new SessionsService());
         }
     }
 }

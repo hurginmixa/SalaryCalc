@@ -44,11 +44,15 @@ namespace MyHomeUnity
                 string refPath = Path.Combine(directoryName, @ref);
 
                 var assembly = Assembly.LoadFile(refPath);
+
                 var type = assembly.GetType(moduleType);
+                if (type == null)
+                {
+                    continue;
+                }
 
                 IModuleInit moduleInit = (IModuleInit)Activator.CreateInstance(type);
-
-                moduleInit.ClassFactoriesRegistration(classFactoryRegister);
+                moduleInit?.ClassFactoriesRegistration(classFactoryRegister);
             }
         }
 

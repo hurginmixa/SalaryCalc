@@ -7,7 +7,7 @@ namespace PersonsService
     {
         public void ClassFactoriesRegistration(IClassFactoryRegister register)
         {
-            register.AddFactory(() => (IPersonService)new PersonsService());
+            register.AddFactoryForSingleton(() => (IPersonService)new PersonsService());
         }
     }
 }
