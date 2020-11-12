@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using InterfacesDefinitions.PersonsServiceInterfaces;
 using MyHomeMVC.Controllers;
 using MyHomeMVC.Views;
 using MyHomeUnity;
@@ -21,6 +22,8 @@ namespace SalaryCalc
             {
                 controllerRequest = controllerRequest.RunController().RunView();
             }
+
+            Bootstrapper.Factory.GetInstance<IPersonService>().Save();
         }
     }
 }

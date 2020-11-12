@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AccessToData;
 using InterfacesDefinitions.PersonsServiceInterfaces;
 using InterfacesDefinitions.SessionsServiceInterfaces;
 
@@ -11,11 +12,14 @@ namespace PersonsService
 
         public PersonsService()
         {
-            AddNewPerson("a", "b", Role.Manager);
+            PersonDataList dataList = PersonDataListSerializer.Load();
+
+            _list.AddRange(dataList.DataList.Select(p => new Person(p)));
         }
 
         public void Save()
         {
+            PersonDataListSerializer.Save(new PersonDataList {DataList = _list.Select(p => p.GetData).ToArray()});
         }
 
         public PersonServiceResult GetPerson(string firstName, string lastName, out IPerson person)
@@ -44,8 +48,7 @@ namespace PersonsService
                 return PersonServiceResult.AlreadyExist;
             }
 
-            Person person = new Person(firstName, lastName, role);
-            _list.Add(person);
+            _list.Add(new Person(new PersonData {FirstName = firstName, LastName = lastName, Role = role}));
 
             return PersonServiceResult.Success;
         }

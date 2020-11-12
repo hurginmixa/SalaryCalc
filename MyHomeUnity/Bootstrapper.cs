@@ -43,7 +43,13 @@ namespace MyHomeUnity
 
                 string refPath = Path.Combine(directoryName, @ref);
 
-                var assembly = Assembly.LoadFile(refPath);
+                var assembly = Assembly.LoadFrom(refPath);
+                AssemblyName[] referencedAssemblies = assembly.GetReferencedAssemblies();
+
+                foreach (var assemblyName in referencedAssemblies)
+                {
+                }
+
 
                 var type = assembly.GetType(moduleType);
                 if (type == null)

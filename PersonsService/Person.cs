@@ -1,14 +1,15 @@
-﻿using InterfacesDefinitions.PersonsServiceInterfaces;
+﻿using AccessToData;
+using InterfacesDefinitions.PersonsServiceInterfaces;
 
 namespace PersonsService
 {
     internal class Person : IPerson
     {
-        public Person(string firstName, string lastName, Role role)
+        public Person(PersonData personData)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            Role = role;
+            FirstName = personData.FirstName;
+            LastName = personData.LastName;
+            Role = personData.Role;
         }
 
         public string FirstName { get; }
@@ -16,5 +17,7 @@ namespace PersonsService
         public string LastName { get; }
         
         public Role Role { get; }
+
+        public PersonData GetData => new PersonData() {FirstName = FirstName, LastName = LastName, Role = Role};
     }
 }
