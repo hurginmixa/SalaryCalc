@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SalaryCalc.Views.ViewFields;
 
-namespace SalaryCalc.Views.ViewClasses
+namespace MyHomeMVC.Views
 {
-    internal class ResultValueList
+    public class ResultValueList
     {
         private readonly List<ResultValue> _list;
 
@@ -13,9 +12,9 @@ namespace SalaryCalc.Views.ViewClasses
             _list = new List<ResultValue>();
         }
 
-        public ResultValueList(IEnumerable<Field> fieldList) : this()
+        public ResultValueList(IEnumerable<ResultValue> fieldList) : this()
         {
-            _list = fieldList.Select(f => new ResultValue(f.Name, f.Value)).ToList();
+            _list = fieldList.ToList();
         }
 
         public int Count() => _list.Count;

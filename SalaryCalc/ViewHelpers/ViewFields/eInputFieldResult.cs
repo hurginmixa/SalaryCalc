@@ -1,4 +1,4 @@
-﻿namespace SalaryCalc.Views.ViewFields
+﻿namespace SalaryCalc.ViewHelpers.ViewFields
 {
     internal enum eInputFieldResult
     {

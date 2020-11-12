@@ -1,9 +1,8 @@
-﻿using SalaryCalc.Views.ViewClasses;
-using SalaryCalc.Views.ViewFields;
+﻿using MyHomeMVC.Views;
 
-namespace SalaryCalc.Controllers
+namespace MyHomeMVC.Controllers
 {
-    internal abstract class ControllerRequest
+    public abstract class ControllerRequest
     {
         private readonly ViewResult _viewResult;
 
@@ -17,7 +16,7 @@ namespace SalaryCalc.Controllers
         protected abstract ControllerBase Controller { get; }
     }
 
-    internal class ControllerRequest<TControllerBase> : ControllerRequest where TControllerBase : ControllerBase, new()
+    public class ControllerRequest<TControllerBase> : ControllerRequest where TControllerBase : ControllerBase, new()
     {
         public ControllerRequest(eViewStatus viewStatus, ResultValueList valueList) : base(viewStatus, valueList)
         {

@@ -1,8 +1,9 @@
 ﻿using InterfacesDefinitions.PersonsServiceInterfaces;
+using MyHomeMVC.Controllers;
+using MyHomeMVC.Views;
 using MyHomeUnity;
 using SalaryCalc.Models;
 using SalaryCalc.Views;
-using SalaryCalc.Views.ViewClasses;
 
 namespace SalaryCalc.Controllers
 {

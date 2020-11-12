@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SalaryCalc.Views.ViewFields
+namespace SalaryCalc.ViewHelpers.ViewFields
 {
     internal abstract class Field
     {

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using SalaryCalc.Views.ViewClasses;
+using System.Linq;
+using MyHomeMVC.Views;
 
-namespace SalaryCalc.Views.ViewFields
+namespace SalaryCalc.ViewHelpers.ViewFields
 {
     internal class FieldList
     {
@@ -46,6 +47,6 @@ namespace SalaryCalc.Views.ViewFields
             return inputFieldResult == eInputFieldResult.Ok ? eViewStatus.Ok : eViewStatus.Cancel;
         }
 
-        public ResultValueList ToResultValueList() => new ResultValueList(_fields);
+        public ResultValueList ToResultValueList() => new ResultValueList(_fields.Select(f => new ResultValue(f.Name, f.Value)));
     }
 }

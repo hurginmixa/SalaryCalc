@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace SalaryCalc
+namespace SalaryCalc.ViewHelpers
 {
     internal static class ViewTools
     {

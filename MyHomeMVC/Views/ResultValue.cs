@@ -1,6 +1,6 @@
-﻿namespace SalaryCalc.Views.ViewClasses
+﻿namespace MyHomeMVC.Views
 {
-    internal class ResultValue
+    public class ResultValue
     {
         public ResultValue(string name, string value)
         {

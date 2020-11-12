@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\InterfacesDefinitions\InterfacesDefinitions.csproj" />
+    <ProjectReference Include="..\MyHomeMVC\MyHomeMVC.csproj" />
     <ProjectReference Include="..\MyHomeUnity\MyHomeUnity.csproj" />
   </ItemGroup>
 
@@ -21,7 +22,7 @@
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>$(SolutionDir)\Bin\</OutputPath>
+    <OutputPath>$(SolutionDir)Bin\</OutputPath>
   </PropertyGroup>
 
 </Project>

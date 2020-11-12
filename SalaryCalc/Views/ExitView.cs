@@ -1,6 +1,8 @@
 ﻿using System;
+using MyHomeMVC.Controllers;
+using MyHomeMVC.Views;
 using SalaryCalc.Controllers;
-using SalaryCalc.Views.ViewClasses;
+using SalaryCalc.ViewHelpers;
 
 namespace SalaryCalc.Views
 {

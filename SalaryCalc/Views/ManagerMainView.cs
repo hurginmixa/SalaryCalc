@@ -1,9 +1,11 @@
 ﻿using System;
 using InterfacesDefinitions.PersonsServiceInterfaces;
+using MyHomeMVC.Controllers;
+using MyHomeMVC.Views;
 using SalaryCalc.Controllers;
 using SalaryCalc.Models;
-using SalaryCalc.Views.ViewClasses;
-using SalaryCalc.Views.ViewFields;
+using SalaryCalc.ViewHelpers;
+using SalaryCalc.ViewHelpers.ViewFields;
 
 namespace SalaryCalc.Views
 {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
+using MyHomeMVC.Controllers;
+using MyHomeMVC.Views;
 using SalaryCalc.Views;
-using SalaryCalc.Views.ViewClasses;
-using SalaryCalc.Views.ViewFields;
 
 namespace SalaryCalc.Controllers
 {
