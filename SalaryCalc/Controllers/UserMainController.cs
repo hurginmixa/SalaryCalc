@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Linq;
 using MyHomeMVC.Controllers;
 using MyHomeMVC.Views;
 using SalaryCalc.Views;
 
 namespace SalaryCalc.Controllers
 {
-    internal class ManagerMainController : ControllerBase
+    internal class UserMainController : ControllerBase
     {
         public enum eAction
         {
             None,
-            ExitProgram,
+            Exit,
             ChangeUser,
-            AddNewPerson,
-            ShowWorkerList
+            AddWorkTime
         }
 
         public override ViewRequest Run(ViewResult viewResult)
@@ -29,20 +27,17 @@ namespace SalaryCalc.Controllers
                 return new ViewRequest<AskToExitView>();
             }
 
-            var choose = Enum.Parse<eAction>(viewResult.Values["Choose"], ignoreCase: true);
+            eAction choose = Enum.Parse<eAction>(viewResult.Values["Choose"]);
             switch (choose)
             {
-                case eAction.ExitProgram:
+                case eAction.Exit:
                     return new ViewRequest<ExitView>();
 
                 case eAction.ChangeUser:
                     return new ViewRequest<LoginView>();
-
-                case eAction.AddNewPerson:
-                    return new ViewRequest<ManagerAddNewPersonView>();
-                
+               
                 default:
-                    return new ViewRequest<ManagerMainView>();
+                    return new ViewRequest<UserMainView>();
             }
         }
     }

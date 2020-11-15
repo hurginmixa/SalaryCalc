@@ -2,7 +2,6 @@
 using System.Text;
 using InterfacesDefinitions.PersonsServiceInterfaces;
 using MyHomeMVC.Controllers;
-using MyHomeMVC.Views;
 using MyHomeUnity;
 using SalaryCalc.Controllers;
 
@@ -16,7 +15,7 @@ namespace SalaryCalc
 
             Console.OutputEncoding = Encoding.UTF8;
 
-            ControllerRequest controllerRequest = new ControllerRequest<LoginController>(eViewStatus.None, new ResultValueList());
+            ControllerRequest controllerRequest = new ControllerRequest<LoginController>();
 
             while (controllerRequest != null)
             {

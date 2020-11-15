@@ -20,6 +20,8 @@ namespace SalaryCalc.Models
 
         public void StartNewSession(IPerson person)
         {
+            _currentSession?.Exit();
+
             _currentSession = Bootstrapper.Factory.GetInstance<ISessionsService>().NewSessionForPerson(person);
         }
 

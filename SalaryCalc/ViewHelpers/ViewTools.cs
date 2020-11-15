@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using SalaryCalc.ViewHelpers.ViewFields;
 
 namespace SalaryCalc.ViewHelpers
 {
@@ -179,6 +180,27 @@ namespace SalaryCalc.ViewHelpers
 
             text = text.PadRight(length);
             return text;
+        }
+
+        public static eInputFieldResult AsInputFieldResult(this eInputResult src)
+        {
+            switch (src)
+            {
+                case ViewTools.eInputResult.Ok:
+                    return eInputFieldResult.Ok;
+
+                case ViewTools.eInputResult.Tab:
+                    return eInputFieldResult.NextField;
+
+                case ViewTools.eInputResult.ShiftTab:
+                    return eInputFieldResult.PrevField;
+
+                case ViewTools.eInputResult.Esc:
+                    return eInputFieldResult.Cancel;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(src), src, null);
+            }
         }
     }
 }

@@ -22,6 +22,10 @@ namespace MyHomeMVC.Controllers
         {
         }
 
+        public ControllerRequest() : base(eViewStatus.None, new ResultValueList())
+        {
+        }
+
         protected override ControllerBase Controller => new TControllerBase();
     }
 }

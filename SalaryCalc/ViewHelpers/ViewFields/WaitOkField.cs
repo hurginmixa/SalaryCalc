@@ -20,7 +20,7 @@ namespace SalaryCalc.ViewHelpers.ViewFields
         {
             ViewTools.eInputResult inputResult = ViewTools.WaitToOk(Left, Top, ConsoleColor.Green, _text);
 
-            return Convert(inputResult);
+            return inputResult.AsInputFieldResult();
         }
 
         public override void Draw()

@@ -10,6 +10,13 @@ namespace SessionsService
             Person = person;
         }
 
-        public IPerson Person { get; }
+        public IPerson Person { get; private set; }
+
+        public bool IsSessionOpen => Person != null;
+
+        public void Exit()
+        {
+            Person = null;
+        }
     }
 }

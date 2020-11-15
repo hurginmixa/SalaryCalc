@@ -5,19 +5,9 @@ namespace InterfacesDefinitions.SessionsServiceInterfaces
     public interface ISession
     {
         IPerson Person { get; }
+
+        bool IsSessionOpen { get; }
+
+        void Exit();
     }
-
-    public class PersonData1
-    {
-        public PersonData1()
-        {
-        }
-
-        public string FirstName;
-        
-        public string LastName;
-
-        public Role Role;
-    }
-
 }

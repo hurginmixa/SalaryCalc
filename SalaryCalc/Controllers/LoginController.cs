@@ -18,6 +18,11 @@ namespace SalaryCalc.Controllers
 
             if (viewResult.ViewStatus == eViewStatus.Cancel)
             {
+                if (ApplicationData.CurrentData.CurrentSession?.IsSessionOpen ?? false)
+                {
+                    return ApplicationData.CurrentData.GetMainViewForCurrentPearson();
+                }
+
                 return new ViewRequest<ExitView>();
             }
 
@@ -25,7 +30,7 @@ namespace SalaryCalc.Controllers
 
             if (personService.GetPerson(viewResult.Values["FirstName"], viewResult.Values["LastName"], out IPerson person) != PersonServiceResult.Success)
             {
-                return new ViewRequest<LoginView>(new ViewInput("Пользователь не найден"));
+                return new ViewRequest<LoginView>(new ViewInput(message: "Пользователь не найден"));
             }
 
             ApplicationData.CurrentData.StartNewSession(person);
