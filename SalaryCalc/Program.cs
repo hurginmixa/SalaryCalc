@@ -11,6 +11,8 @@ namespace SalaryCalc
     {
         public static void Main()
         {
+            Console.Title = "Salary Calculation";
+
             Bootstrapper.LoadModules("SalaryCalc.xml");
 
             Console.OutputEncoding = Encoding.UTF8;
