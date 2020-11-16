@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System.Reflection;
 
-namespace AccessToData
+namespace JsonSerializing
 {
-    internal class Tools
+    internal static class Tools
     {
         public static string CombineFileName(string fileName)
         {

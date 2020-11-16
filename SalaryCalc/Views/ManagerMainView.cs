@@ -29,8 +29,8 @@ namespace SalaryCalc.Views
             ViewTools.Txt(top: pos++, left: left, text: "(3). Просмотреть отчет по всем сотрудникам");
             ViewTools.Txt(top: pos++, left: left, text: "(4). Просмотреть отчет по конкретному сотруднику");
             ViewTools.Txt(top: pos++, left: left, text: "(5). Добавить часы работы");
-            ViewTools.Txt(top: pos++, left: left, text: "(6). Выход из программы");
-            ViewTools.Txt(top: pos++, left: left, text: "(7). Сменить пользователя");
+            ViewTools.Txt(top: pos++, left: left, text: "(6). Сменить пользователя");
+            ViewTools.Txt(top: pos++, left: left, text: "(7). Выход из программы");
             pos++;
             ViewTools.Txt(top: pos, left: left, text: "Ваш выбор : ");
             FieldList fields = new FieldList().Add(new ChooseField(top: pos++, left: left + 13, name: "Choose", chooseConvert: ChooseConvert));
@@ -48,9 +48,9 @@ namespace SalaryCalc.Views
 
                 "2" => ManagerMainController.eAction.ShowWorkerList.ToString(),
 
-                "6" => ManagerMainController.eAction.ExitProgram.ToString(),
+                "7" => ManagerMainController.eAction.ExitProgram.ToString(),
                 
-                "7" => ManagerMainController.eAction.ChangeUser.ToString(),
+                "6" => ManagerMainController.eAction.ChangeUser.ToString(),
                 
                 _ => ManagerMainController.eAction.None.ToString()
             };

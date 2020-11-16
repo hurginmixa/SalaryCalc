@@ -3,6 +3,7 @@ using System.Linq;
 using AccessToData;
 using InterfacesDefinitions.PersonsServiceInterfaces;
 using InterfacesDefinitions.SessionsServiceInterfaces;
+using MyHomeUnity;
 
 namespace PersonsService
 {
@@ -12,14 +13,16 @@ namespace PersonsService
 
         public PersonsService()
         {
-            PersonDataList dataList = PersonDataListSerializer.Load();
+            IPersonDataListSerializer serializer = Bootstrapper.Factory.GetInstance<IPersonDataListSerializer>();
+            PersonDataList dataList = serializer.Load();
 
             _list.AddRange(dataList.DataList.Select(p => new Person(p)));
         }
 
         public void Save()
         {
-            PersonDataListSerializer.Save(new PersonDataList {DataList = _list.Select(p => p.GetData).ToArray()});
+            IPersonDataListSerializer serializer = Bootstrapper.Factory.GetInstance<IPersonDataListSerializer>();
+            serializer.Save(new PersonDataList {DataList = _list.Select(p => p.GetData).ToArray()});
         }
 
         public PersonServiceResult GetPerson(string firstName, string lastName, out IPerson person)
@@ -51,6 +54,9 @@ namespace PersonsService
             _list.Add(new Person(new PersonData {FirstName = firstName, LastName = lastName, Role = role}));
 
             return PersonServiceResult.Success;
+
+            int[] arr = new[] {1, 2, 3, 4, 5};
+            int i = arr[^0];
         }
     }
 }

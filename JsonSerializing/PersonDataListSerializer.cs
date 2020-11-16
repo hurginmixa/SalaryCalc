@@ -1,11 +1,12 @@
 ﻿using System.IO;
+using AccessToData;
 using InterfacesDefinitions.PersonsServiceInterfaces;
 
-namespace AccessToData
+namespace JsonSerializing
 {
-    public static class PersonDataListSerializer
+    public class PersonDataListSerializer : IPersonDataListSerializer
     {
-        public static PersonDataList Load()
+        public PersonDataList Load()
         {
             string fileName = GetFileName();
 
@@ -17,7 +18,7 @@ namespace AccessToData
             return JsonSerializer.Deserialize<PersonDataList>(File.ReadAllText(fileName));
         }
 
-        public static void Save(PersonDataList personDataList)
+        public void Save(PersonDataList personDataList)
         {
             string json = JsonSerializer.FormatJson(JsonSerializer.Serialize(personDataList));
 

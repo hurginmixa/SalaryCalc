@@ -9,8 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InterfacesDefinitions\InterfacesDefinitions.csproj" />
-    <ProjectReference Include="..\MyHomeUnity\MyHomeUnity.csproj" />
+    <ProjectReference Include="..\DataAccess\AccessToData.csproj" />
   </ItemGroup>
 
 </Project>

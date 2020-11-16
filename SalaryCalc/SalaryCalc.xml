@@ -1,5 +1,8 @@
-﻿<ModuleCatalog xmlns="MyHomeUnity">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ModuleCatalog xmlns="MyHomeUnity">
     <ModuleInfo ModuleType="SessionsService.SessionsServiceInit" Ref="SessionsService.dll" />
 
     <ModuleInfo ModuleType="PersonsService.PersonsServiceInit" Ref="PersonsService.dll" />
+
+    <ModuleInfo ModuleType="JsonSerializing.JsonSerializingInit" Ref="JsonSerializing.dll" />
 </ModuleCatalog>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace AccessToData
+namespace JsonSerializing
 {
     internal static class JsonSerializer
     {
