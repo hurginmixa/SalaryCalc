@@ -1,7 +1,7 @@
 ﻿using AccessToData;
 using MyHomeUnity;
 
-namespace JsonSerializing
+namespace JsonSerializingService
 {
     class JsonSerializingInit : IModuleInit
     {

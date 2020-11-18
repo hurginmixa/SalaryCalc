@@ -28,12 +28,14 @@ namespace SalaryCalc.Controllers
 
             IPersonService personService = Bootstrapper.Factory.GetInstance<IPersonService>();
 
-            if (personService.GetPerson(viewResult.Values["FirstName"], viewResult.Values["LastName"], out IPerson person) != PersonServiceResult.Success)
+            (PersonServiceResult Result, IPerson Person) personTuple = personService.GetPerson(viewResult.Values["FirstName"], viewResult.Values["LastName"]);
+
+            if (personTuple.Result != PersonServiceResult.Success)
             {
                 return new ViewRequest<LoginView>(new ViewInput(message: "Пользователь не найден"));
             }
 
-            ApplicationData.CurrentData.StartNewSession(person);
+            ApplicationData.CurrentData.StartNewSession(personTuple.Person);
 
             return ApplicationData.CurrentData.GetMainViewForCurrentPearson();
         }

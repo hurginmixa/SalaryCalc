@@ -2,7 +2,7 @@
 using AccessToData;
 using InterfacesDefinitions.PersonsServiceInterfaces;
 
-namespace JsonSerializing
+namespace JsonSerializingService
 {
     public class PersonDataListSerializer : IPersonDataListSerializer
     {

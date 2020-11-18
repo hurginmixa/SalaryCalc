@@ -1,4 +1,5 @@
-﻿using InterfacesDefinitions.SessionsServiceInterfaces;
+﻿using System.Collections.Generic;
+using InterfacesDefinitions.SessionsServiceInterfaces;
 
 namespace InterfacesDefinitions.PersonsServiceInterfaces
 {
@@ -6,8 +7,10 @@ namespace InterfacesDefinitions.PersonsServiceInterfaces
     {
         void Save();
 
-        PersonServiceResult GetPerson(string firstName, string lastName, out IPerson person);
+        (PersonServiceResult Result, IPerson Person) GetPerson(string firstName, string lastName);
 
-        PersonServiceResult GetAddlingPerson(ISession session, out IAddlingPerson addlingPerson);
+        (PersonServiceResult Result, IAddlingPerson AddlingPerson) GetAddlingPerson(ISession session);
+
+        (PersonServiceResult Result, IEnumerable<IPerson> PersonList) GetPersonList(ISession session);
     }
 }

@@ -9,5 +9,7 @@ namespace AccessToData
         public string LastName;
 
         public Role Role;
+
+        public int Id;
     }
 }

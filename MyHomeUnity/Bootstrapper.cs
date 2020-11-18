@@ -28,7 +28,6 @@ namespace MyHomeUnity
             namespaceManager.AddNamespace("home", "MyHomeUnity");
 
             XmlNodeList nodeList = document.SelectNodes("/home:ModuleCatalog/home:ModuleInfo", namespaceManager);
-
             if (nodeList == null)
             {
                 return;
@@ -39,17 +38,11 @@ namespace MyHomeUnity
             foreach (XmlNode node in nodeList)
             {
                 string moduleType = node.Attributes?["ModuleType"]?.Value ?? string.Empty;
-                string @ref = node.Attributes?["Ref"]?.Value ?? string.Empty;
+                string refModule = node.Attributes?["Ref"]?.Value ?? string.Empty;
 
-                string refPath = Path.Combine(directoryName, @ref);
+                string refPath = Path.Combine(directoryName, refModule);
 
                 var assembly = Assembly.LoadFrom(refPath);
-                AssemblyName[] referencedAssemblies = assembly.GetReferencedAssemblies();
-
-                foreach (var assemblyName in referencedAssemblies)
-                {
-                }
-
 
                 var type = assembly.GetType(moduleType);
                 if (type == null)

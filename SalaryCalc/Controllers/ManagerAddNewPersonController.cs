@@ -18,7 +18,8 @@ namespace SalaryCalc.Controllers
 
             var personService = Bootstrapper.Factory.GetInstance<IPersonService>();
 
-            if (personService.GetAddlingPerson(ApplicationData.CurrentData.CurrentSession, out var addlingPerson) != PersonServiceResult.Success)
+            (PersonServiceResult Result, IAddlingPerson AddlingPerson) tuple;
+            if ((tuple = personService.GetAddlingPerson(ApplicationData.CurrentData.CurrentSession)).Result != PersonServiceResult.Success)
             {
                 return new ViewRequest<ManagerAddNewPersonView>(new ViewInput("Не хватает прав для добавления пользователя", viewResult.Values));
             }
@@ -38,27 +39,20 @@ namespace SalaryCalc.Controllers
 
             Role role = (Role)int.Parse(txtRole);
 
-            PersonServiceResult addingResult;
-            if ((addingResult = addlingPerson.AddNewPerson(firstName, lastName, role)) != PersonServiceResult.Success)
+            (PersonServiceResult Result, IPerson Person) newPersonTuple;
+            if ((newPersonTuple = tuple.AddlingPerson.AddNewPerson(firstName, lastName, role)).Result == PersonServiceResult.Success)
             {
-                string message;
-
-                switch (addingResult)
-                {
-                    default:
-                        message = "Пользователь не может быть добавлен (внутренняя ошибка)";
-                        break;
-
-                    case PersonServiceResult.AlreadyExist:
-                        message = "Такой пользователь уже существует";
-                        break;
-                }
-
-                return new ViewRequest<ManagerAddNewPersonView>(new ViewInput(message, viewResult.Values));
-
+                return new ViewRequest<ManagerMainView>();
             }
 
-            return new ViewRequest<ManagerMainView>();
+            string message = newPersonTuple.Result switch
+            {
+                PersonServiceResult.AlreadyExist => $"{newPersonTuple.Person.FirstName}, {newPersonTuple.Person.LastName} пользователь уже существует",
+
+                _ => "Пользователь не может быть добавлен (внутренняя ошибка)"
+            };
+
+            return new ViewRequest<ManagerAddNewPersonView>(new ViewInput(message, viewResult.Values));
         }
     }
 }
