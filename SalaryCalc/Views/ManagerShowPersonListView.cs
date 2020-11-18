@@ -27,9 +27,9 @@ namespace SalaryCalc.Views
             ViewTools.Txt(top: top++, left: left, text: "--------------------------------------------");
             top++;
 
-            ViewTools.Txt(top: top++, left: left, text:"+------+------------------+------------------+-----------+");
-            ViewTools.Txt(top: top++, left: left, text:"|  Id  |      Имя         |      Фамилия     | Должность |");
-            ViewTools.Txt(top: top++, left: left, text:"+------+------------------+------------------+-----------+");
+            ViewTools.Txt(top: top++, left: left, text:"+------+------------------+------------------+-------------+");
+            ViewTools.Txt(top: top++, left: left, text:"|  Id  |      Имя         |      Фамилия     |  Должность  |");
+            ViewTools.Txt(top: top++, left: left, text:"+------+------------------+------------------+-------------+");
 
             IPerson[] persons = (IPerson[]) model;
 
@@ -43,10 +43,10 @@ namespace SalaryCalc.Views
                     _ => throw new ArgumentOutOfRangeException()
                 };
 
-                ViewTools.Txt(top: top++, left: left, text:$"| {person.Id,4} | {person.FirstName,-16} | {person.LastName,-16} | {role, -9} |");
+                ViewTools.Txt(top: top++, left: left, text:$"| {person.Id,4} | {person.FirstName,-16} | {person.LastName,-16} | {role, -11} |");
             }
 
-            ViewTools.Txt(top: top++, left: left, text:"+------+------------------+------------------+-----------+");
+            ViewTools.Txt(top: top++, left: left, text:"+------+------------------+------------------+-------------+");
 
 
             FieldList fields = new FieldList();

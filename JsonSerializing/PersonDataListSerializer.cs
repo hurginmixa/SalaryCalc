@@ -12,7 +12,7 @@ namespace JsonSerializingService
 
             if (!File.Exists(fileName))
             {
-                return new PersonDataList {DataList = new[] {new PersonData {FirstName = "a", LastName = "b", Role = Role.Manager}}};
+                return new PersonDataList {DataList = new[] {new PersonData {FirstName = "a", LastName = "b", Role = Role.Manager, Id = 1}}};
             }
 
             return JsonSerializer.Deserialize<PersonDataList>(File.ReadAllText(fileName));
