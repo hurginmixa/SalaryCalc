@@ -7,7 +7,7 @@ using MyHomeUnity;
 
 namespace PersonsService
 {
-    internal class PersonsService : IPersonService, IAddlingPerson
+    internal class PersonsService : IPersonService, IPersonAdding
     {
         private readonly List<Person> _list = new List<Person>();
 
@@ -32,7 +32,7 @@ namespace PersonsService
             return (person != null ? PersonServiceResult.Success : PersonServiceResult.PersonIsNotFound, person);
         }
 
-        public (PersonServiceResult, IAddlingPerson) GetAddlingPerson(ISession session)
+        public (PersonServiceResult, IPersonAdding) GetAddlingPerson(ISession session)
         {
             return session.Person.Role == Role.Manager ? (PersonServiceResult.Success, this) : (PersonServiceResult.AccessDenied, null);
         }

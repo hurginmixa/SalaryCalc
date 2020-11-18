@@ -18,8 +18,8 @@ namespace SalaryCalc.Controllers
 
             var personService = Bootstrapper.Factory.GetInstance<IPersonService>();
 
-            (PersonServiceResult Result, IAddlingPerson AddlingPerson) tuple;
-            if ((tuple = personService.GetAddlingPerson(ApplicationData.CurrentData.CurrentSession)).Result != PersonServiceResult.Success)
+            (PersonServiceResult Result, IPersonAdding AddingPerson) addlingPersonTuple;
+            if ((addlingPersonTuple = personService.GetAddlingPerson(ApplicationData.CurrentData.CurrentSession)).Result != PersonServiceResult.Success)
             {
                 return new ViewRequest<ManagerAddNewPersonView>(new ViewInput("Не хватает прав для добавления пользователя", viewResult.Values));
             }
@@ -40,7 +40,7 @@ namespace SalaryCalc.Controllers
             Role role = (Role)int.Parse(txtRole);
 
             (PersonServiceResult Result, IPerson Person) newPersonTuple;
-            if ((newPersonTuple = tuple.AddlingPerson.AddNewPerson(firstName, lastName, role)).Result == PersonServiceResult.Success)
+            if ((newPersonTuple = addlingPersonTuple.AddingPerson.AddNewPerson(firstName, lastName, role)).Result == PersonServiceResult.Success)
             {
                 return new ViewRequest<ManagerMainView>();
             }

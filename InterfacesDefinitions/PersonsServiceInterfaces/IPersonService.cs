@@ -9,7 +9,7 @@ namespace InterfacesDefinitions.PersonsServiceInterfaces
 
         (PersonServiceResult Result, IPerson Person) GetPerson(string firstName, string lastName);
 
-        (PersonServiceResult Result, IAddlingPerson AddlingPerson) GetAddlingPerson(ISession session);
+        (PersonServiceResult Result, IPersonAdding AddlingPerson) GetAddlingPerson(ISession session);
 
         (PersonServiceResult Result, IEnumerable<IPerson> PersonList) GetPersonList(ISession session);
     }

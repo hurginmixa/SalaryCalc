@@ -47,7 +47,7 @@ namespace MyHomeUnity
                 var type = assembly.GetType(moduleType);
                 if (type == null)
                 {
-                    continue;
+                    throw new Exception($"The {moduleType} is not found in {refPath}");
                 }
 
                 IModuleInit moduleInit = (IModuleInit)Activator.CreateInstance(type);

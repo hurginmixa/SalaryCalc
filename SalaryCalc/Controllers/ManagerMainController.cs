@@ -50,7 +50,6 @@ namespace SalaryCalc.Controllers
                     IPersonService personService = Bootstrapper.Factory.GetInstance<IPersonService>();
 
                     var (result, personList) = personService.GetPersonList(ApplicationData.CurrentData.CurrentSession);
-
                     if (result == PersonServiceResult.Success)
                     {
                         return new ViewRequest<ManagerShowPersonListView>(personList.ToArray());

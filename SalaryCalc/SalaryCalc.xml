@@ -4,5 +4,5 @@
 
     <ModuleInfo ModuleType="PersonsService.PersonsServiceInit" Ref="PersonsService.dll" />
 
-    <ModuleInfo ModuleType="JsonSerializing.JsonSerializingInit" Ref="JsonSerializingService.dll" />
+    <ModuleInfo ModuleType="JsonSerializingService.JsonSerializingInit" Ref="JsonSerializingService.dll" />
 </ModuleCatalog>

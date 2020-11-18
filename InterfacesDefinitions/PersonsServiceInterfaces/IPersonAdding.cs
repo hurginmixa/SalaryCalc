@@ -1,6 +1,6 @@
 ﻿namespace InterfacesDefinitions.PersonsServiceInterfaces
 {
-    public interface IAddlingPerson
+    public interface IPersonAdding
     {
         (PersonServiceResult, IPerson) AddNewPerson(string firstName, string lastName, Role role);
     }
