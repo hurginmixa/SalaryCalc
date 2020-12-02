@@ -11,14 +11,12 @@ namespace SalaryCalc
     {
         public static void Main()
         {
-            Console.Title = "Salary Calculation";
-
             Bootstrapper.LoadModules("SalaryCalc.xml");
 
+            Console.Title = "Salary Calculation";
             Console.OutputEncoding = Encoding.UTF8;
 
             ControllerRequest controllerRequest = new ControllerRequest<LoginController>();
-
             while (controllerRequest != null)
             {
                 controllerRequest = controllerRequest.RunController().RunView();
