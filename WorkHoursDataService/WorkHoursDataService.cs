@@ -6,6 +6,10 @@ namespace WorkHoursDataService
 {
     internal class WorkHoursDataService : IWorkHoursDataService
     {
+        public void Save()
+        {
+        }
+
         public (WorkHoursDataServiceResult Result, IAddingNewWorkHour AddingNewWorkHour) GetAddingNewWorkHour(ISession session)
         {
             throw new System.NotImplementedException();

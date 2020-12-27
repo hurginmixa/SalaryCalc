@@ -6,6 +6,8 @@ namespace InterfacesDefinitions.WorkHoursDataServiceInterfaces
 {
     public interface IWorkHoursDataService
     {
+        void Save();
+
         (WorkHoursDataServiceResult Result, IAddingNewWorkHour AddingNewWorkHour) GetAddingNewWorkHour(ISession session);
 
         (WorkHoursDataServiceResult Result, IEnumerable<IWorkHoursData> List) GetWorkHourListById(ISession session, int id);

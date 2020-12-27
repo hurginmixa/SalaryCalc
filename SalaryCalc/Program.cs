@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using InterfacesDefinitions.PersonsServiceInterfaces;
+using InterfacesDefinitions.WorkHoursDataServiceInterfaces;
 using MyHomeMVC.Controllers;
 using MyHomeUnity;
 using SalaryCalc.Controllers;
@@ -23,6 +24,7 @@ namespace SalaryCalc
             }
 
             Bootstrapper.Factory.GetInstance<IPersonService>().Save();
+            Bootstrapper.Factory.GetInstance<IWorkHoursDataService>().Save();
         }
     }
 }
